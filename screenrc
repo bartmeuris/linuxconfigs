@@ -1,0 +1,11 @@
+defnonblock on
+vbell off
+startup_message off
+utf8 on
+autodetach on
+bell_msg '~Bell in window %'
+#term "screen-256color"
+termcap xterm-256color 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
+terminfo xterm-256-color 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
+termcap xterm 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
+terminfo xterm 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
