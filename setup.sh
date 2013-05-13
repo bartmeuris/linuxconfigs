@@ -112,7 +112,7 @@ element_exists()
 remove()
 {
     local file="$1"
-    
+
     # Don't recursively remove symbolic links to directories,
     # just real directories.
     if [[ -d $file ]] && [[ ! -h $file ]]
