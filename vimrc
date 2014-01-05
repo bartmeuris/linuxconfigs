@@ -181,7 +181,7 @@ autocmd FileType python set expandtab
 
 " Markdown: {{{
 autocmd FileType md,markdown source ~/.vim/syntax/mkd.vim
-
+autocmd FileType md,markdown set expandtab
 " }}}
 
 " vim: set foldmethod=marker : "
