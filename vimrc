@@ -11,6 +11,9 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 Bundle 'Lokaltog/vim-powerline'
+"Bundle 'bling/vim-airline' " New/better powerline alternative? https://github.com/bling/vim-airline
+"Bundle 'itchyny/lightline.vim' " Another powerline alternative: https://github.com/itchyny/lightline.vim
+
 Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/syntastic'
 Bundle 'cnf/vim-pointless'
@@ -18,6 +21,9 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'vim-scripts/taglist.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'ervandew/supertab'
+Bundle 'tpope/vim-sleuth'
+Bundle 'kien/ctrlp.vim'
+
 "Bundle 'vim-scripts/TabBar'
 
 "Bundle 'hynek/vim-python-pep8-indent'
@@ -70,6 +76,7 @@ set tags+=../../../tags
 set tags+=../../../../tags
 
 set backspace=indent,eol,start
+
 set matchpairs+=<:>		" add '<' and '>' as pairs to match
 set formatoptions-=o
 set modelines=5
@@ -101,6 +108,7 @@ set nofoldenable " No folding by default
 
 nnoremap <f2> :NERDTreeToggle<cr>
 nnoremap <f3> :TagbarToggle<cr>
+nnoremap <C-b> :CtrlPBuffer<cr>
 
 " }}}
 
