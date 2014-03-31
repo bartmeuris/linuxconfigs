@@ -119,7 +119,7 @@ set shiftwidth=4
 "set expandtab
 set autoindent
 set smartindent
-set cindent
+"set cindent
 set smarttab
 
 autocmd FileType ruby setlocal ts=2 sts=2 sw=2
@@ -173,7 +173,7 @@ let g:syntastic_enable_highlighting = 1
 
 let g:syntastic_mode_map = {
 	\ 'mode': 'active',
-	\ 'active_filetypes': ['ruby', 'php', 'c', 'cpp' ],
+	\ 'active_filetypes': ['ruby', 'php', 'c', 'cpp', 'golang', 'go' ],
 	\ 'passive_filetypes': ['puppet']
 	\ }
 " }}}
