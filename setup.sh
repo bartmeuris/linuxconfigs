@@ -29,7 +29,7 @@ post_install_actions()
         cd vim/bundle/
         git clone https://github.com/gmarik/vundle.git vundle
     fi
-    vim +BundleInstall +qall
+    vim -s <(echo ':BundleInstall'; echo ':qall')
 }
 
 
