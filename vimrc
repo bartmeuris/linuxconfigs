@@ -18,11 +18,20 @@ set encoding=utf-8 " Necessary to show unicode glyphs
 set number
 set cursorline
 set mouse=v
+set nrformats-=octal
+set wildmenu
+set display+=lastline
+set scrolloff=2
+set autoread
+set history=1000
+set tabpagemax=50
+set switchbuf=usetab,newtab
 
-if v:version >= 703
-	"undo settings
-	set undodir=~/.vim/undofiles
-	set undofile
+if v:version > 703 || v:version == 703 && has("patch541")
+	set formatoptions+=j " Delete comment character when joining commented lines
+endif
+if &shell =~# 'fish$'
+	set shell=/bin/bash
 endif
 
 " jump to last cursor position when opening a file
@@ -70,12 +79,7 @@ if has("persistent_undo")
 	endif
 endif
 
-
-"highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-"match OverLength /\%81v.\+/
-
 set pastetoggle=<f5>
-
 set nomesg                          " because being talked to during an edit is aggravating
 
 " }}}
@@ -116,6 +120,10 @@ set ignorecase                      " search case insensitive
 set smartcase                       " unless search contains caps
 set incsearch                       " Show matches while typing
 set hlsearch                        " When there is a previous search pattern, highlight all its matches
+" Use <C-L> to clear the highlighting of :set hlsearch.
+if maparg('<C-L>', 'n') ==# ''
+	nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+endif
 " }}}
 
 " Show Invisible Characters: {{{
@@ -131,9 +139,9 @@ syntax enable
 set t_Co=256 "enable 256 colors
 set background=dark
 try
-  color pointless
+	color pointless
 catch /^Vim\%((\a\+)\)\=:E185/
-  color default
+	color default
 endtry
 
 au! BufNewFile,BufRead Vagrantfile set filetype=ruby
@@ -205,7 +213,6 @@ endif
 if has("linebreak")
   let &sbr = nr2char(8618).' '  " Show ↪ at the beginning of wrapped lines
 endif
-
 
 " Airline: {{{
 "let g:airline_left_sep='▶'
