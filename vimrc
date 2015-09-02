@@ -2,11 +2,15 @@
 source ~/.vim/neobundlerc
 " }}}
 
+" Check out this for more for more inspiration:
+" http://mg.pov.lt/vim/vimrc
+
 " Important config: {{{
 set modeline
 set modelines=5
 
 set laststatus=2   " Always show the statusline
+set cmdheight=1
 set encoding=utf-8 " Necessary to show unicode glyphs
 " }}}
 
@@ -49,9 +53,24 @@ set formatoptions-=o
 
 " Wrapping
 "set showbreak=...
+"
+set backup
+set backupdir=~/.vim/tmp
 
 " Don't put swp files in pwd
-set dir='~/.vim/swp,~/tmp,/var/tmp,/tmp'
+if !isdirectory(&backupdir)
+	exec 'silent !mkdir -p ' . &backupdir
+endif
+let &dir=&backupdir
+if has("persistent_undo")
+	set undofile
+	let &undodir=&backupdir . '/.vimundo'
+	if !isdirectory(&undodir)
+		" create the undo directory if it doesn't already exist
+		exec "silent !mkdir -p " . &undodir
+	endif
+endif
+
 
 "highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 "match OverLength /\%81v.\+/
@@ -177,5 +196,16 @@ vmap <C-v> <Plug>(expand_region_shrink)
 
 map q: :q
 " }}}
+
+if has("digraphs")
+	digraph -- 8212               " em dash
+	digraph `` 8220               " left double quotation mark
+	digraph '' 8221               " right double quotation mark
+	digraph ,, 8222               " double low-9 quotation mark
+endif
+if has("linebreak")
+  let &sbr = nr2char(8618).' '  " Show ↪ at the beginning of wrapped lines
+endif
+
 
 " vim: set foldmethod=marker : "
