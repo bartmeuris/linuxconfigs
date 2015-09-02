@@ -1,51 +1,18 @@
-" Vundle: {{{
-set nocompatible
-filetype off
+" NeoBundle config: {{{
+source ~/.vim/neobundlerc
+" }}}
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+" Important config: {{{
+set modeline
+set modelines=5
 
-" :BundleInstall
-" or run
-" vim +BundleInstall +qall
-Bundle 'gmarik/vundle'
-
-Bundle 'Lokaltog/vim-powerline'
-"Bundle 'bling/vim-airline' " New/better powerline alternative? https://github.com/bling/vim-airline
-"Bundle 'itchyny/lightline.vim' " Another powerline alternative: https://github.com/itchyny/lightline.vim
-
-Bundle 'tpope/vim-fugitive'
-Bundle 'scrooloose/syntastic'
-Bundle 'cnf/vim-pointless'
-Bundle 'scrooloose/nerdtree'
-Bundle 'vim-scripts/taglist.vim'
-Bundle 'majutsushi/tagbar'
-Bundle 'ervandew/supertab'
-Bundle 'tpope/vim-sleuth'
-Bundle 'kien/ctrlp.vim'
-
-"Bundle 'vim-scripts/TabBar'
-
-"Bundle 'hynek/vim-python-pep8-indent'
-"Bundle 'tpope/vim-markdown'
-"Bundle 'tomtom/tcomment_vim'
-"Bundle 'rodjek/vim-puppet'
-"Bundle 'Glench/Vim-Jinja2-Syntax'
-"Bundle 'airblade/vim-gitgutter'
-"Bundle 'msanders/snipmate.vim'
-"Bundle 'nathanaelkane/vim-indent-guides'
-
-filetype plugin indent on
-"}}}
-
-" General Config: {{{
-set nocompatible   " Disable vi-compatibility
 set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show unicode glyphs
+" }}}
 
 
+" General Config: {{{
 set number
-"set relativenumber
 set cursorline
 set mouse=v
 
@@ -79,7 +46,6 @@ set backspace=indent,eol,start
 
 set matchpairs+=<:>		" add '<' and '>' as pairs to match
 set formatoptions-=o
-set modelines=5
 
 " Wrapping
 "set showbreak=...
@@ -146,7 +112,11 @@ set listchars=tab:▸\ ,trail:⋅,nbsp:⋅
 syntax enable
 set t_Co=256 "enable 256 colors
 set background=dark
-color pointless
+try
+  color pointless
+catch /^Vim\%((\a\+)\)\=:E185/
+  color default
+endtry
 
 au! BufNewFile,BufRead Vagrantfile set filetype=ruby
 au! BufNewFile,BufRead *.json set ft=javascript
@@ -165,9 +135,14 @@ let g:syntastic_cpp_compiler = 'clang++'
 "let g:syntastic_c_checkers = [ "gcc" ]
 "let g:syntastic_cpp_checkers = [ "gcc" ]
 
-"let g:syntastic_check_on_open = 1
+let g:syntastic_enable_baloons = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_enable_signs = 1
 let g:syntastic_error_symbol = '✗'
+"let g:syntastic_warning_symbol = '!'
 let g:syntastic_warning_symbol = '⚠'
+let g:syntastic_style_error_symbol = "☢"
+"let g:syntastic_ok_symbol = '√'
 let g:syntastic_enable_highlighting = 1
 
 
@@ -190,6 +165,17 @@ autocmd FileType python set expandtab
 " Markdown: {{{
 autocmd FileType md,markdown source ~/.vim/syntax/mkd.vim
 autocmd FileType md,markdown set expandtab
+" }}}
+
+" Leader tryout {{{
+let mapleader = "\<Space>"
+map <Leader>o :CtrlP<CR>
+map <Leader><Leader> V
+
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
+
+map q: :q
 " }}}
 
 " vim: set foldmethod=marker : "

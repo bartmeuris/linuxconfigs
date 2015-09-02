@@ -25,11 +25,12 @@ install_home()
 post_install_actions()
 {
     [[ ! -d vim/bundle ]] && mkdir -p vim/bundle
-    if [ ! -d "vim/bundle/vundle" ]; then
+    if [ ! -d "vim/bundle/neobundle.vim" ]; then
         cd vim/bundle/
-        git clone https://github.com/gmarik/vundle.git vundle
+        git clone https://github.com/Shougo/neobundle.vim
+        cd -
     fi
-    vim -s <(echo ':BundleInstall'; echo ':qall')
+    vim -N -u vim/neobundlerc -c "try | NeoBundleUpdate! $* | finally | qall! | endtry" -U NONE -i NONE -V1 -e -s
 }
 
 

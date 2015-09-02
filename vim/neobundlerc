@@ -44,6 +44,7 @@ NeoBundle 'ervandew/supertab'
 NeoBundle 'tpope/vim-sleuth'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'terryma/vim-expand-region'
+NeoBundle 'Lokaltog/vim-powerline'
 
 call neobundle#end()
 
@@ -55,7 +56,6 @@ filetype plugin indent on
 NeoBundleCheck
 
 " }}}
-
 
 
 " vi:foldmethod=marker:syntax=vim
