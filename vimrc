@@ -9,7 +9,6 @@ source ~/.vim/neobundlerc
 set modeline
 set modelines=5
 
-set laststatus=2   " Always show the statusline
 set cmdheight=1
 set encoding=utf-8 " Necessary to show unicode glyphs
 " }}}
@@ -208,4 +207,15 @@ if has("linebreak")
 endif
 
 
-" vim: set foldmethod=marker : "
+" Airline: {{{
+"let g:airline_left_sep='▶'
+"let g:airline_right_sep='◀'
+let g:airline_detect_modified=1
+let g:airline_detect_paste=1
+let g:airline_powerline_fonts=1
+let g:airline_theme='powerlineish'
+set laststatus=2   " Always show the statusline
+
+" }}}
+
+" vim: set foldmethod=marker:

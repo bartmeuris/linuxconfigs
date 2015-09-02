@@ -44,7 +44,8 @@ NeoBundle 'ervandew/supertab'
 NeoBundle 'tpope/vim-sleuth'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'terryma/vim-expand-region'
-NeoBundle 'Lokaltog/vim-powerline'
+"NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'bling/vim-airline'
 
 call neobundle#end()
 
