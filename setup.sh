@@ -44,7 +44,7 @@ install_file()
        [[ -L $dest_file_path ]]		  # Can be a broken symlink
     then
         if [[ -e $dest_file_path ]] && 
-           diff -q "$file" "$dest_file_path" > /dev/null
+            diff -q "$file" "$dest_file_path" > /dev/null
         then
             echo "identical $dest_file_path"
         elif $replace_all
